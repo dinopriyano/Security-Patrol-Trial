@@ -1,6 +1,8 @@
 package com.dupat.demosecuritypatrol.network
 
 import com.dupat.demosecuritypatrol.interceptor.TokenInterceptor
+import com.dupat.demosecuritypatrol.network.response.WebResponse
+import com.dupat.demosecuritypatrol.network.response.data.LoginData
 import com.dupat.demosecuritypatrol.session.SharedPrefManager
 import com.dupat.demosecuritypatrol.utils.MyApplication
 import okhttp3.OkHttpClient
@@ -12,13 +14,13 @@ import java.util.concurrent.TimeUnit
 
 interface APIInterface {
 
-//    @FormUrlEncoded
-//    @POST("auth/login")
-//    @Headers("No-Auth: true")
-//    suspend fun userLogin(
-//        @Field("id") id:String,
-//        @Field("password") password: String
-//    ) : Response<WebResponse<LoginData>>
+    @FormUrlEncoded
+    @POST("auth/login")
+    @Headers("No-Auth: true")
+    suspend fun userLogin(
+        @Field("username") id:String,
+        @Field("password") password: String
+    ) : Response<WebResponse<LoginData>>
 //
 //    @FormUrlEncoded
 //    @PUT("user/{user_id}")
