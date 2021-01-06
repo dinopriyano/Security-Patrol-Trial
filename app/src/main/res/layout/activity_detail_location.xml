@@ -1,21 +1,371 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schem inas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".DetailLocationActivity">
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.dupat.demosecuritypatrol.viewmodel.DetailLocationViewModel" />
+    </data>
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
+        android:id="@+id/containerDetailLocation"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schem inas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fillViewport="true">
+        android:orientation="vertical"
+        tools:context=".DetailLocationActivity">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:theme="@style/ToolbarTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_700"
+            app:title=""/>
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
 
-    </androidx.core.widget.NestedScrollView>
+            <LinearLayout
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-</LinearLayout>
+                <TextView
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detil Lokasi"
+                    android:textColor="#272727"
+                    android:textSize="16sp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F4F4F4">
+
+                    <LinearLayout
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtName"
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/InputTheme"
+                            android:textColorHint="#7E7E7E"
+                            app:hintTextColor="#7E7E7E"
+                            android:background="@drawable/background_input_login"
+                            android:paddingVertical="5dp"
+                            android:hint="Nama Lokasi">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:id="@+id/etName"
+                                android:focusable="false"
+                                android:paddingStart="0dp"
+                                android:backgroundTint="#00FFFFFF"
+                                android:inputType="none"
+                                android:editable="false"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLatitude"
+                            android:padding="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/InputTheme"
+                            android:textColorHint="#7E7E7E"
+                            app:hintTextColor="#7E7E7E"
+                            android:background="@drawable/background_input_login"
+                            android:paddingVertical="5dp"
+                            android:hint="Latitude Lokasi">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:id="@+id/etLatitude"
+                                android:paddingStart="0dp"
+                                android:backgroundTint="#00FFFFFF"
+                                android:inputType="none"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtLongitude"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/InputTheme"
+                            android:textColorHint="#7E7E7E"
+                            app:hintTextColor="#7E7E7E"
+                            android:background="@drawable/background_input_login"
+                            android:paddingVertical="5dp"
+                            android:hint="Longitude Lokasi">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:id="@+id/etLongitude"
+                                android:paddingStart="0dp"
+                                android:backgroundTint="#00FFFFFF"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:editable="false"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detil Anda"
+                    android:textColor="#272727"
+                    android:layout_marginTop="20dp"
+                    android:textSize="16sp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F4F4F4">
+
+                    <LinearLayout
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtUserName"
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/InputTheme"
+                            android:textColorHint="#7E7E7E"
+                            app:hintTextColor="#7E7E7E"
+                            android:background="@drawable/background_input_login"
+                            android:paddingVertical="5dp"
+                            android:hint="Nama">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:id="@+id/etUserName"
+                                android:paddingStart="0dp"
+                                android:backgroundTint="#00FFFFFF"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:editable="false"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtUserLatitude"
+                            android:padding="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/InputTheme"
+                            android:textColorHint="#7E7E7E"
+                            app:hintTextColor="#7E7E7E"
+                            android:background="@drawable/background_input_login"
+                            android:paddingVertical="5dp"
+                            android:hint="Latitude">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:id="@+id/etUserLatitude"
+                                android:paddingStart="0dp"
+                                android:backgroundTint="#00FFFFFF"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:editable="false"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtUserLongitude"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/InputTheme"
+                            android:textColorHint="#7E7E7E"
+                            app:hintTextColor="#7E7E7E"
+                            android:background="@drawable/background_input_login"
+                            android:paddingVertical="5dp"
+                            android:hint="Longitude">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:id="@+id/etUserLongitude"
+                                android:paddingStart="0dp"
+                                android:backgroundTint="#00FFFFFF"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:editable="false"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status Situasi"
+                    android:textColor="#272727"
+                    android:layout_marginTop="20dp"
+                    android:textSize="16sp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F4F4F4">
+
+                    <LinearLayout
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RadioButton
+                                android:id="@+id/rbAman"
+                                android:buttonTint="@color/purple_700"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Aman"/>
+                            <RadioButton
+                                android:id="@+id/rbCukupAman"
+                                android:buttonTint="@color/purple_700"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Cukup Aman"/>
+                            <RadioButton
+                                android:id="@+id/rbBahaya"
+                                android:buttonTint="@color/purple_700"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Bahaya"/>
+                            <RadioButton
+                                android:id="@+id/rbSangatBahaya"
+                                android:buttonTint="@color/purple_700"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Sangat Bahaya"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto Situasi"
+                    android:textColor="#272727"
+                    android:layout_marginTop="20dp"
+                    android:textSize="16sp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#F4F4F4">
+
+                    <LinearLayout
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="0dp"
+                            app:cardCornerRadius="8dp">
+
+                            <ImageView
+                                android:id="@+id/ivSituation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"/>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTakePhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:textAllCaps="false"
+                            android:text="Ambil Gambar"
+                            app:backgroundTint="@color/purple_700"
+                            app:rippleColor="@color/rippleColor"
+                            app:cornerRadius="8dp"
+                            android:textColor="#FFFFFF"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:id="@+id/btnNext"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginBottom="15dp"-->
+<!--                    android:text="Selanjutnya"-->
+<!--                    app:backgroundTint="@color/purple_700"-->
+<!--                    app:rippleColor="@color/rippleColor"-->
+<!--                    app:cornerRadius="8dp"-->
+<!--                    android:padding="20dp"-->
+<!--                    android:textColor="#FFFFFF"/>-->
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

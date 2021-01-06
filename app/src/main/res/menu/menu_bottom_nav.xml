@@ -11,4 +11,9 @@
         android:title="Laporan"
         android:icon="@drawable/ic_report"/>
 
+    <item
+        android:id="@+id/menu_settings"
+        android:title="Pengaturan"
+        android:icon="@drawable/ic_settings"/>
+
 </menu>

@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.dupat.demosecuritypatrol.fragment.ChatFragment
 import com.dupat.demosecuritypatrol.fragment.ReportFragment
+import com.dupat.demosecuritypatrol.fragment.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -16,6 +17,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private var activeFragment: Fragment? = null
     private var frgChat: Fragment? = null
     private var frgReport: Fragment? = null
+    private var frgSettings: Fragment? = null
     private var fragmentManager: FragmentManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         frgChat = ChatFragment()
         frgReport = ReportFragment()
+        frgSettings = SettingsFragment()
         activeFragment = frgChat
         fragmentManager = supportFragmentManager
         setupFragment()
@@ -41,6 +44,9 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.menu_report -> {
                 frg = frgReport
             }
+            R.id.menu_settings -> {
+                frg = frgSettings
+            }
         }
 
         showFragment(frg)
@@ -51,6 +57,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     {
         fragmentManager!!.beginTransaction().add(R.id.fragmentContainer,frgChat as Fragment,"").hide(frgChat!!).commit()
         fragmentManager!!.beginTransaction().add(R.id.fragmentContainer,frgReport as Fragment,"").hide(frgReport!!).commit()
+        fragmentManager!!.beginTransaction().add(R.id.fragmentContainer,frgSettings as Fragment,"").hide(frgSettings!!).commit()
         showFragment(activeFragment)
     }
 

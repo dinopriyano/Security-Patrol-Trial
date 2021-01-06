@@ -13,6 +13,7 @@ import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.dupat.demosecuritypatrol.DetailLocationActivity
 import com.dupat.demosecuritypatrol.R
+import com.dupat.demosecuritypatrol.utils.toast
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -35,7 +36,7 @@ class ReportFragment : Fragment(),PermissionListener {
         codeScanner = CodeScanner(activity, scannerView)
         codeScanner.decodeCallback = DecodeCallback {
             activity.runOnUiThread {
-                Toast.makeText(activity, it.text, Toast.LENGTH_LONG).show()
+//                Toast.makeText(activity, it.text, Toast.LENGTH_LONG).show()
                 val intent = Intent(activity,DetailLocationActivity::class.java)
                 intent.putExtra("locID",it.text)
                 startActivity(intent)

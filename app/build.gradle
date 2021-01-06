@@ -127,4 +127,10 @@ dependencies {
 
     //Dexter simple request permission
     implementation 'com.karumi:dexter:6.2.2'
+
+    //Simple location
+    implementation 'com.github.delight-im:Android-SimpleLocation:v1.1.0'
+
+    //Para Camera
+    implementation 'com.mindorks:paracamera:0.2.2'
 }

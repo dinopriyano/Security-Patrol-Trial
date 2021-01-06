@@ -2,6 +2,7 @@ package com.dupat.demosecuritypatrol.network
 
 import com.dupat.demosecuritypatrol.interceptor.TokenInterceptor
 import com.dupat.demosecuritypatrol.network.response.WebResponse
+import com.dupat.demosecuritypatrol.network.response.data.LocationData
 import com.dupat.demosecuritypatrol.network.response.data.LoginData
 import com.dupat.demosecuritypatrol.session.SharedPrefManager
 import com.dupat.demosecuritypatrol.utils.MyApplication
@@ -15,12 +16,18 @@ import java.util.concurrent.TimeUnit
 interface APIInterface {
 
     @FormUrlEncoded
-    @POST("auth/login")
+    @POST("api/login-user")
     @Headers("No-Auth: true")
     suspend fun userLogin(
         @Field("username") id:String,
         @Field("password") password: String
     ) : Response<WebResponse<LoginData>>
+
+    @GET("api/zone/{id}")
+    @Headers("No-Auth: true")
+    suspend fun locationDetail(
+        @Path("id") id: String
+    ) : Response<WebResponse<LocationData>>
 //
 //    @FormUrlEncoded
 //    @PUT("user/{user_id}")
@@ -60,7 +67,7 @@ interface APIInterface {
             return Retrofit
                 .Builder()
                 .client(client)
-                .baseUrl("https://dinopriyano.my.id/api/")
+                .baseUrl("http://192.168.1.13:80/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(APIInterface::class.java)

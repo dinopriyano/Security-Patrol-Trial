@@ -5,9 +5,8 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.dupat.dupatlsp.R
+import com.dupat.demosecuritypatrol.R
 import com.google.android.material.snackbar.Snackbar
-import com.pd.chocobar.ChocoBar
 
 fun Context.toast(msg: String)
 {
@@ -17,7 +16,7 @@ fun Context.toast(msg: String)
 fun View.snackbar(msg: String)
 {
     Snackbar.make(this,msg, Snackbar.LENGTH_LONG).also { snackbar ->
-        snackbar.setActionTextColor(resources.getColor(R.color.colorPrimary))
+        snackbar.setActionTextColor(resources.getColor(R.color.purple_700))
         snackbar.setAction("OK"){
             snackbar.dismiss()
         }
@@ -35,15 +34,4 @@ fun Context.showKeyboard() {
     (getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)?.apply {
         toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
     }
-}
-
-fun Activity.chocobar(msg: String)
-{
-    ChocoBar.builder().also { cb ->
-        cb.setActivity(this)
-        cb.setActionText("OK")
-        cb.setActionTextColor(resources.getColor(R.color.colorPrimary))
-        cb.setText(msg)
-        cb.setDuration(ChocoBar.LENGTH_LONG)
-    }.build().show()
 }
