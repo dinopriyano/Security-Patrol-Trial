@@ -12,9 +12,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-package com.dupat.faceferification.facerecognition.customview
+package com.dupat.demosecuritypatrol.facerecognition.customview
 
-import com.dupat.faceferification.facerecognition.tflite.SimilarityClassifier.Recognition
+import com.dupat.demosecuritypatrol.facerecognition.tflite.SimilarityClassifier.Recognition
 
 interface ResultsView {
     fun setResults(results: List<Recognition?>?)

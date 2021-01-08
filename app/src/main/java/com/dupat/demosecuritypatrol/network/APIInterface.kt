@@ -4,9 +4,12 @@ import com.dupat.demosecuritypatrol.interceptor.TokenInterceptor
 import com.dupat.demosecuritypatrol.network.response.WebResponse
 import com.dupat.demosecuritypatrol.network.response.data.LocationData
 import com.dupat.demosecuritypatrol.network.response.data.LoginData
+import com.dupat.demosecuritypatrol.network.response.data.ReportData
 import com.dupat.demosecuritypatrol.session.SharedPrefManager
 import com.dupat.demosecuritypatrol.utils.MyApplication
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,6 +31,19 @@ interface APIInterface {
     suspend fun locationDetail(
         @Path("id") id: String
     ) : Response<WebResponse<LocationData>>
+
+    @Multipart
+    @POST("api/report")
+    @Headers("No-Auth: true")
+    suspend fun addReport(
+            @Part photo: MultipartBody.Part,
+            @Part("user_id") user_id: RequestBody,
+            @Part("zone_id") zone_id: RequestBody,
+            @Part("status") status: RequestBody,
+            @Part("latitude") latitude: RequestBody,
+            @Part("longitude") longitude: RequestBody,
+            @Part("note") note: RequestBody
+    ) : Response<WebResponse<ReportData>>
 //
 //    @FormUrlEncoded
 //    @PUT("user/{user_id}")
@@ -67,7 +83,7 @@ interface APIInterface {
             return Retrofit
                 .Builder()
                 .client(client)
-                .baseUrl("http://192.168.1.13:80/")
+                .baseUrl("http://dinopriyano.my.id/security_patrol_backend/public/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(APIInterface::class.java)

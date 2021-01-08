@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-package com.dupat.faceferification.facerecognition.tflite
+package com.dupat.demosecuritypatrol.facerecognition.tflite
 
 import android.graphics.Bitmap
 import android.graphics.RectF

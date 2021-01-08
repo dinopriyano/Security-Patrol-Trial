@@ -1,4 +1,4 @@
-package com.dupat.faceferification.facerecognition.env
+package com.dupat.demosecuritypatrol.facerecognition.env
 
 import android.graphics.*
 import android.graphics.Paint.Align

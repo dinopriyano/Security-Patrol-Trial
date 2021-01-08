@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.dupat.demosecuritypatrol.viewmodel.DataSetSecurityViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/containerCamera"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentTop="true"
+                android:theme="@style/ToolbarTheme"
+                android:background="@color/purple_700">
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="15dp"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:context="org.tensorflow.demo.CameraActivity" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/bottom_sheet_layout"
+            layout="@layout/tfe_od_layout_bottom_sheet" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@android:color/white"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/purple_700"
+            android:visibility="gone"
+            app:layout_anchor="@id/bottom_sheet_layout"
+            app:layout_anchorGravity="top|end"
+            />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

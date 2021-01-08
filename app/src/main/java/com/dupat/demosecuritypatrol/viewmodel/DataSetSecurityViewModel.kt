@@ -2,15 +2,13 @@ package com.dupat.demosecuritypatrol.viewmodel
 
 import android.graphics.Bitmap
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dupat.demosecuritypatrol.db.dao.DataSetSecurityDao
 import com.dupat.demosecuritypatrol.db.entity.DataSetSecurity
 import com.dupat.demosecuritypatrol.network.repositories.SecurityDatabaseRepository
+import com.dupat.demosecuritypatrol.utils.APIExceptions
 import com.dupat.demosecuritypatrol.utils.Corountines
 import com.dupat.demosecuritypatrol.utils.Function.bitmapToByteArray
-import com.dupat.demosecuritypatrol.utils.Function.resizedBitmap
 import com.dupat.demosecuritypatrol.utils.SingleLiveEvent
 import com.dupat.demosecuritypatrol.viewmodel.state.ViewState
 import com.google.android.gms.tasks.OnSuccessListener
@@ -18,8 +16,12 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetector
 import com.google.mlkit.vision.face.FaceDetectorOptions
-import java.io.ByteArrayOutputStream
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 import java.util.*
+
 
 class DataSetSecurityViewModel(val repository: SecurityDatabaseRepository): ViewModel() {
 
@@ -29,6 +31,13 @@ class DataSetSecurityViewModel(val repository: SecurityDatabaseRepository): View
     var imageUrl: String? = null
     private var dataSet = repository.dataSetSecurity
     private var numValidDetect = MutableLiveData<Int>()
+    var latitude: String? = null
+    var longitude: String? = null
+    var note: String? = null
+    var photo: String? = null
+    var status: String? = null
+    var user_id: String? = null
+    var zone_id: String? = null
 
     fun validateImage(){
         state.value = ViewState.IsLoading(true)
@@ -55,19 +64,47 @@ class DataSetSecurityViewModel(val repository: SecurityDatabaseRepository): View
                         state.value = ViewState.Error("Face not found")
                         Log.d("TAG", "Face not found")
                         return@OnSuccessListener
-                    }
-                    else if(faces.size > 1){
+                    } else if (faces.size > 1) {
                         state.value = ViewState.IsLoading(false)
                         state.value = ViewState.Error("Face more than one")
                         Log.d("TAG", "Face more than one")
                         return@OnSuccessListener
-                    }
-                    else {
+                    } else {
                         state.value = ViewState.IsLoading(false)
                         state.value = ViewState.IsSuccess(0)
                         Log.d("TAG", "Face count: " + faces.size)
                     }
                 })
+        }
+    }
+
+    fun AddingReport(){
+        state.value = ViewState.IsLoading(true)
+        Log.d("Latitude", latitude!!)
+        val file = File(photo!!)
+        val reqUserID: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), user_id)
+        val reqZoneID: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), zone_id)
+        val reqStatus: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), status)
+        val reqLatitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), latitude)
+        val reqLongitude: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), longitude)
+        val reqNote: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), note)
+        val reqImage: RequestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+        val reqPhoto: MultipartBody.Part = MultipartBody.Part.createFormData("photo", file.name, reqImage)
+        Corountines.main {
+            try {
+                val response = repository.addReport(reqPhoto,reqUserID,reqZoneID,reqStatus,reqLatitude,reqLongitude,reqNote)
+                response.let {
+                    state.value = ViewState.IsSuccess(3)
+                    state.value = ViewState.SuccessMessage(it)
+                    return@main
+                }
+
+                state.value = ViewState.Error(response.message!!)
+            }
+            catch (e: APIExceptions)
+            {
+                state.value = ViewState.Error(e.message!!)
+            }
         }
     }
 
@@ -82,10 +119,10 @@ class DataSetSecurityViewModel(val repository: SecurityDatabaseRepository): View
         else{
             state.value = ViewState.IsLoading(true)
             val dataSetSecurity: DataSetSecurity = DataSetSecurity(
-                1,
-                securityName!!,
-                imageUrl!!,
-                bitmapToByteArray(bmpImage!!)
+                    1,
+                    securityName!!,
+                    imageUrl!!,
+                    bitmapToByteArray(bmpImage!!)
             )
 
             Corountines.main {

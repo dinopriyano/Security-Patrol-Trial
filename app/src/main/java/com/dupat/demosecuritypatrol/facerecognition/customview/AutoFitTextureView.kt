@@ -1,4 +1,4 @@
-package com.dupat.faceferification.facerecognition.customview
+package com.dupat.demosecuritypatrol.facerecognition.customview
 
 import android.content.Context
 import android.util.AttributeSet

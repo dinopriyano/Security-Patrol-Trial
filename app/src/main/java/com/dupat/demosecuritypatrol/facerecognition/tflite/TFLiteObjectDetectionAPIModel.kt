@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-package com.dupat.faceferification.facerecognition.tflite
+package com.dupat.demosecuritypatrol.facerecognition.tflite
 
 import android.content.res.AssetManager
 import android.graphics.Bitmap
@@ -20,8 +20,8 @@ import android.graphics.RectF
 import android.os.Trace
 import android.util.Log
 import android.util.Pair
-import com.dupat.faceferification.facerecognition.env.Logger
-import com.dupat.faceferification.facerecognition.tflite.SimilarityClassifier.Recognition
+import com.dupat.demosecuritypatrol.facerecognition.env.Logger
+import com.dupat.demosecuritypatrol.facerecognition.tflite.SimilarityClassifier.Recognition
 import org.tensorflow.lite.Interpreter
 import java.io.BufferedReader
 import java.io.FileInputStream

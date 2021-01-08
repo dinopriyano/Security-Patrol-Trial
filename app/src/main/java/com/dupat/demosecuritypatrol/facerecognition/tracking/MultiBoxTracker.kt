@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-package com.dupat.faceferification.facerecognition.tracking
+package com.dupat.demosecuritypatrol.facerecognition.tracking
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -22,10 +22,10 @@ import android.graphics.Paint.Join
 import android.text.TextUtils
 import android.util.Pair
 import android.util.TypedValue
-import com.dupat.faceferification.facerecognition.env.BorderedText
-import com.dupat.faceferification.facerecognition.env.ImageUtils
-import com.dupat.faceferification.facerecognition.env.Logger
-import com.dupat.faceferification.facerecognition.tflite.SimilarityClassifier.Recognition
+import com.dupat.demosecuritypatrol.facerecognition.env.BorderedText
+import com.dupat.demosecuritypatrol.facerecognition.env.ImageUtils
+import com.dupat.demosecuritypatrol.facerecognition.env.Logger
+import com.dupat.demosecuritypatrol.facerecognition.tflite.SimilarityClassifier.Recognition
 import java.util.*
 
 class MultiBoxTracker(context: Context) {

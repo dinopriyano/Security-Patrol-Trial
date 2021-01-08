@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         viewmodel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.viewmodel = viewmodel
 
-        checkSession()
+//        checkSession()
         handleUIState()
     }
 
@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     SharedPrefManager.setString(this,"name",data.data!!.user.name)
                     SharedPrefManager.setString(this,"email",data.data!!.user.email)
 
-                    startActivity(Intent(this,HomeActivity::class.java))
+                    startActivity(Intent(this,SetDataSetActivity::class.java))
                     overridePendingTransition(R.anim.slide_in_right,R.anim.stay)
                     finish()
                 }

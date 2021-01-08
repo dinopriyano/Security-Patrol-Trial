@@ -203,7 +203,6 @@
                                 android:backgroundTint="#00FFFFFF"
                                 android:focusable="false"
                                 android:inputType="none"
-                                android:editable="false"
                                 android:layout_height="wrap_content"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -228,7 +227,6 @@
                                 android:backgroundTint="#00FFFFFF"
                                 android:focusable="false"
                                 android:inputType="none"
-                                android:editable="false"
                                 android:layout_height="wrap_content"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -241,7 +239,7 @@
                     android:fontFamily="@font/roboto_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status Situasi"
+                    android:text="Situasi Lokasi"
                     android:textColor="#272727"
                     android:layout_marginTop="20dp"
                     android:textSize="16sp"/>
@@ -289,6 +287,29 @@
                                 android:layout_height="match_parent"
                                 android:text="Sangat Bahaya"/>
                         </RadioGroup>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txtNote"
+                            android:layout_marginTop="5dp"
+                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/InputTheme"
+                            android:textColorHint="#7E7E7E"
+                            app:hintTextColor="#7E7E7E"
+                            android:background="@drawable/background_input_login"
+                            android:paddingVertical="5dp"
+                            android:hint="Catatan">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:id="@+id/etNote"
+                                android:paddingStart="0dp"
+                                android:backgroundTint="#00FFFFFF"
+                                android:inputType="textLongMessage"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 

@@ -22,7 +22,7 @@ abstract class SecurityDatabase: RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         SecurityDatabase::class.java,
-                        "secutity_database"
+                        "security_database"
                     ).build()
                 }
 

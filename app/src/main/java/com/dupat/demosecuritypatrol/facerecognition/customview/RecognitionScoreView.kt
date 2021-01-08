@@ -1,4 +1,4 @@
-package com.dupat.faceferification.facerecognition.customview
+package com.dupat.demosecuritypatrol.facerecognition.customview
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
-import com.dupat.faceferification.facerecognition.tflite.SimilarityClassifier.Recognition
+import com.dupat.demosecuritypatrol.facerecognition.tflite.SimilarityClassifier.Recognition
 
 class RecognitionScoreView(context: Context?, set: AttributeSet?) : View(context, set),
     ResultsView {
